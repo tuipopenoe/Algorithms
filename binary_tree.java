@@ -154,6 +154,14 @@ public class BinaryTree{
         }
     }
 
+    public void print_paths(){
+        return (print_paths(root, new int[], 1));
+    }
+
+    private void print_paths(Node node, int path[], int path_len){
+
+    }
+
     public void mirror(){
         return mirror(root);
     }
@@ -167,5 +175,41 @@ public class BinaryTree{
             node.left = node.right;
             node.right = temp;
         }
+    }
+
+    public void double_tree(){
+        return double_tree(root);
+    }
+
+    private void double_tree(Node node){
+        if(node == null){
+            return;
+        }
+        double_tree(node.left);
+        double_tree(node.right);
+        Node old_left = node.left;
+        node.left = new Node(node.data);
+        node.left.left = old_left;
+    }
+
+    public boolean same_tree(Node b){
+        return same_tree(root, b);
+    }
+
+    private boolean same_tree(Node a, Node b){
+        if(a == null && b == null){
+            return (true);
+        }
+        else if(a != null && b != null){
+            return (
+                a.data == b.data &&
+                same_tree(a.left, b.left) &&
+                same_tree(a.right, b.right)
+                );
+        }
+        else{
+            return(false);
+        }
+
     }
 }
