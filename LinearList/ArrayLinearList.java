@@ -96,5 +96,27 @@ public class ArrayLinearList{
         size++;
     }
 
+    // convert the array linear list to a string
+    public String toString(){
+        StringBuffer s = new StringBuffer("[");
 
+        // put elements into the buffer
+        for(int i = 0; i < size; i++){
+            if(element[i] == null){
+                s.append("null, ");
+            }
+            else{
+                s.append(elment[i].toString() + ", ");
+            }
+        }
+
+        if(size > 0){
+            s.delete(s.length() - 2, s.length()); // remove last ","
+        }
+
+        s.append("]");
+
+        // create equivalent String
+        return new String(s);
+    }
 }
