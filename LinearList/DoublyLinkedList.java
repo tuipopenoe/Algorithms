@@ -1,15 +1,16 @@
 // Tui Popenoe
-// Chain
+// Doubly Linked List
 
-public class Chain implements LinearList{
+public class DoublyLinkedList implements LinearList{
     // data members
     protected ChainNode firstNode;
+    protected ChainNode lastNode;
     protected int size;
 
-    // constructors
-    // create a list that is empty
+    // Constructors
+    // Create an empty list
     public Chain(int initialCapacity){
-        // The default initial values are null and 0 respectively
+        // default initial values for protected members are null and 0
     }
 
     public Chain(){
@@ -23,7 +24,7 @@ public class Chain implements LinearList{
     }
 
     // @return current number of elements in list
-    public int size(){
+    public boolean size(){
         return size;
     }
 
@@ -39,26 +40,25 @@ public class Chain implements LinearList{
     public Object get(int index){
         checkIndex(index);
 
-        // move to desired node
+        //move to desired node
         ChainNode currentNode = firstNode;
         for(int i = 0; i < index; i++){
             currentNode = currentNode.next;
         }
-
         return currentNode.element;
     }
 
     public int indexOf(Object theElement){
         // search the chain for theElement
         ChainNode currentNode = firstNode;
-        int index = 0; // index of currentNode
+        int index = 0;
         while(currentNode != null && !currentNode.element.equals(theElement)){
             // move to next node
             currentNode = currentNode.next;
-            index++;
+            index ++;
         }
 
-        // make sure we found matching element
+        // Ensure matching element
         if(currentNode == null){
             return -1;
         }
@@ -130,5 +130,10 @@ public class Chain implements LinearList{
         s.append("]");
         // create equivalent String
         return new String(s);
+    }
+
+    public DoublyLinkedList join(DoublyLinkedList lst1, DoublyLinkedList lst2){
+        lst1.lastNode.next = lst2.firstNode;
+        lst2.lastNode.next = lst1.firstNode;
     }
 }
