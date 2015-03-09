@@ -32,7 +32,7 @@ public class BinaryTree{
         if(node == null){
             return(false);
         }
-        if(dataoh == node.data){
+        if(data == node.data){
             return(true);
         }
         else if(data < node.data){
